@@ -496,7 +496,7 @@
 							</div>
 						</div>
 
-						<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+						<button onclick="makePayment(79.65)" id="'paybtn" type="button" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
 							Proceed to Checkout
 						</button>
 					</div>
@@ -660,9 +660,37 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			<i class="zmdi zmdi-chevron-up"></i>
 		</span>
 	</div>
+<script src="https://checkout.flutterwave.com/v3.js"></script>
 
+	<script>
+		function makePayment(amount) {  
+		  FlutterwaveCheckout({
+			public_key: "FLWPUBK_TEST-a51552ae0fd0c7e65ef1656c449db747-X",
+			tx_ref: "titanic-48981487343MDI0NzMx",
+			amount: amount * 100,
+			currency: "NGN",
+			payment_options: "card, banktransfer, ussd",
+			redirect_url: "https://glaciers.titanic.com/handle-flutterwave-payment",
+			meta: {
+			  consumer_id: 23,
+			  consumer_mac: "92a3-912ba-1192a",
+			},
+			customer: {
+			  email: "rose@unsinkableship.com",
+			  phone_number: "08102909304",
+			  name: "Rose DeWitt Bukater",
+			},
+			customizations: {
+			  title: "The Titanic Store",
+			  description: "Payment for an awesome cruise",
+			  logo: "https://www.logolynx.com/images/logolynx/22/2239ca38f5505fbfce7e55bbc0604386.jpeg",
+			},
+		  });
+		}
+		
+	  </script>
 <!--===============================================================================================-->	
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script> 
 <!--===============================================================================================-->
 	<script src="vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
@@ -699,6 +727,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	</script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
-
+	
 </body>
 </html>
